@@ -30,6 +30,7 @@ public class CommandCompleter implements TabCompleter {
       if (args.length < 2) {
          return getCompletion(arguments, args, 0);
       }
+      arguments.clear();
       return arguments;
    }
 

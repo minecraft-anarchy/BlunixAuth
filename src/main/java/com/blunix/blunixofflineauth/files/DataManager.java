@@ -2,6 +2,7 @@ package com.blunix.blunixofflineauth.files;
 
 import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import com.blunix.blunixofflineauth.util.Messager;
+import com.blunix.blunixofflineauth.util.UUIDUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -79,13 +80,13 @@ public class DataManager {
         return Base64.getDecoder().decode(section.getString(uuid.toString() + ".salt"));
     }
 
-    public String getPlayerRecoveryEmail(String uuid) {
+    public String getPlayerRecoveryEmail(String userName) {
         ConfigurationSection section = getData().getConfigurationSection("registered-players");
         if (section == null) {
             Bukkit.getLogger().info("[OfflineAuth] There was an error reading registered-players in data.yml");
             return null;
         }
-        return section.getString(uuid + ".recovery-email");
+        return section.getString(UUIDUtil.getOfflineUUID(userName) + ".recovery-email");
     }
 
     public boolean isRegistered(Player player) {

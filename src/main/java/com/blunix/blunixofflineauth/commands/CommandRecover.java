@@ -51,7 +51,7 @@ public class CommandRecover extends BlunixCommand {
         String temporaryPassword = String.valueOf(new Random().nextInt());
         dataManager.registerPlayer(player, temporaryPassword);
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> sendRecoveryEmail(emailTo, temporaryPassword));
-        Messager.sendMessage(player, "&aCheck your recovery email and type &l/auth login <Password> " +
+        Messager.sendSuccessMessage(player, "&aCheck your recovery email and type &l/auth login <Password> " +
                 "&awith the password you received to login to the server.");
     }
 
