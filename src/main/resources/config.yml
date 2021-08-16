@@ -1,0 +1,35 @@
+# Location when players will login or register.
+login-location:
+  x: 0
+  y: 65
+  z: 0
+  pitch: 0
+  yaw: 0
+  world: world
+
+# Time (In seconds) before the login player gets kicked from the server.
+kick-time: 300
+
+# Message that will be sent to login players to explain how to register.
+register-instruction-message: "Type &l/auth register <Password> <ConfirmPassword> &rto register your username in the server."
+
+# Message that will be sent to login players to explain how to login.
+login-instruction-message: "Type &l/auth login <Password> &rto login to the server."
+
+# Host that will be used to send emails.
+email-host: smpt.gmail.com
+
+# Port used to send emails.
+email-port: 465
+
+# Email where recovery emails will be sent from.
+email-sender: xxxxxx@gmail.com
+
+# Password for the email where recovery emails will be sent from.
+email-sender-password: 123456
+
+# Recovery email's subject.
+email-subject: "Minecraft Anarchy Password Recovery"
+
+# Recovery email's content, use \n to skip a line, {PASSWORD} is the generated temporary password.
+email-content: "This is your temporary password for the Minecraft Anarchy login system: {PASSWORD}"

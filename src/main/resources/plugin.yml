@@ -1,0 +1,8 @@
+main: com.blunix.blunixofflineauth.BlunixOfflineAuth
+name: BlunixOfflineAuth
+version: 1.0
+author: Wmorales01
+
+commands:
+  offlineauth:
+    aliases: [auth]
