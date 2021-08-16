@@ -1,43 +1,67 @@
 package com.blunix.blunixofflineauth.util;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigManager {
-   private OfflineAuth plugin;
+    protected static final BlunixOfflineAuth PLUGIN = BlunixOfflineAuth.getInstance();
 
-   public ConfigManager(OfflineAuth plugin) {
-      this.plugin = plugin;
-   }
+    public static Location getLoginLocation() {
+        String path = "login-location";
+        try {
+            int x = getConfig().getInt(path + ".x");
+            int y = getConfig().getInt(path + ".y");
+            int z = getConfig().getInt(path + ".z");
+            float pitch = (float) getConfig().getDouble(path + ".pitch");
+            float yaw = (float) getConfig().getDouble(path + ".yaw");
+            World world = Bukkit.getWorld(getConfig().getString(path + ".world"));
+            Location loginLocation = new Location(world, x, y, z);
+            loginLocation.setPitch(pitch);
+            loginLocation.setYaw(yaw);
+            return loginLocation;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Bukkit.getLogger().info("[OfflineAuth] Error while getting login location from config.yml");
+            return (Bukkit.getWorlds().iterator().next()).getSpawnLocation();
+        }
+    }
 
-   public Location getLoginLocation() {
-      String path = "login-location";
+    public static long getKickTime() {
+        return (long) getConfig().getDouble("kick-time") * 20L;
+    }
 
-      try {
-         int x = this.plugin.getConfig().getInt(path + ".x");
-         int y = this.plugin.getConfig().getInt(path + ".y");
-         int z = this.plugin.getConfig().getInt(path + ".z");
-         float pitch = (float)this.plugin.getConfig().getDouble(path + ".pitch");
-         float yaw = (float)this.plugin.getConfig().getDouble(path + ".yaw");
-         World world = Bukkit.getWorld(this.plugin.getConfig().getString(path + ".world"));
-         Location loginLocation = new Location(world, (double)x, (double)y, (double)z);
-         loginLocation.setPitch(pitch);
-         loginLocation.setYaw(yaw);
-         return loginLocation;
-      } catch (Exception var9) {
-         var9.printStackTrace();
-         Bukkit.getLogger().info("[OfflineAuth] Error while getting login location from config.yml");
-         return ((World)Bukkit.getWorlds().iterator().next()).getSpawnLocation();
-      }
-   }
+    public static String getString(String path) {
+        return getConfig().getString(path);
+    }
 
-   public long getKickTime() {
-      return (long)this.plugin.getConfig().getDouble("kick-time") * 20L;
-   }
+    public static String getEmailHost() {
+       return getConfig().getString("email-host");
+    }
 
-   public String getString(String path) {
-      return this.plugin.getConfig().getString(path);
-   }
+    public static String getEmailPort() {
+       return getConfig().getString("email-port");
+    }
+
+    public static String getEmailSender() {
+       return getConfig().getString("email-sender");
+    }
+
+    public static String getEmailSenderPassword() {
+       return getConfig().getString("email-sender-password");
+    }
+
+    public static String getEmailSubject() {
+        return getConfig().getString("email-subject");
+    }
+
+    public static String getEmailContent() {
+        return getConfig().getString("email-content");
+    }
+
+    private static FileConfiguration getConfig() {
+        return PLUGIN.getConfig();
+    }
 }

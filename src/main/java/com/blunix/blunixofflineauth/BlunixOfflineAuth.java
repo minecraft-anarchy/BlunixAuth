@@ -14,23 +14,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
-public class OfflineAuth extends JavaPlugin {
+public class BlunixOfflineAuth extends JavaPlugin {
    private final Map<String, BlunixCommand> subcommands = new LinkedHashMap<>();
    private final Map<UUID, Location> loginPlayers = new HashMap<>();
    private final List<Player> unregisteringPlayers = new ArrayList<>();
-   private Location loginLocation;
    private DataManager dataManager;
-   private ConfigManager configManager;
 
-   public static OfflineAuth getInstance() {
-      return OfflineAuth.getPlugin(OfflineAuth.class);
+   public static BlunixOfflineAuth getInstance() {
+      return BlunixOfflineAuth.getPlugin(BlunixOfflineAuth.class);
    }
 
    public void onEnable() {
       configureFiles();
       registerCommands();
       registerListeners();
-      setLoginLocation();
    }
 
    public void onDisable() {
@@ -39,7 +36,6 @@ public class OfflineAuth extends JavaPlugin {
 
    private void configureFiles() {
       saveDefaultConfig();
-      configManager = new ConfigManager(this);
       dataManager = new DataManager(this);
    }
 
@@ -54,6 +50,7 @@ public class OfflineAuth extends JavaPlugin {
       subcommands.put("changeusername", new CommandChangeUsername(this));
       subcommands.put("confirm", new CommandConfirm(this));
       subcommands.put("recoveryemail", new CommandRecoveryEmail(this));
+      subcommands.put("recover", new CommandRecover(this));
       subcommands.put("reload", new CommandReload(this));
    }
 
@@ -75,18 +72,6 @@ public class OfflineAuth extends JavaPlugin {
 
    public List<Player> getUnregisteringPlayers() {
       return this.unregisteringPlayers;
-   }
-
-   public Location getLoginLocation() {
-      return this.loginLocation;
-   }
-
-   public void setLoginLocation() {
-      loginLocation = this.configManager.getLoginLocation();
-   }
-
-   public ConfigManager getConfigManager() {
-      return this.configManager;
    }
 
    public DataManager getDataManager() {

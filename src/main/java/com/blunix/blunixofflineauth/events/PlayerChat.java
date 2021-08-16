@@ -1,6 +1,6 @@
 package com.blunix.blunixofflineauth.events;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import com.blunix.blunixofflineauth.util.Messager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,9 +9,9 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 public class PlayerChat implements Listener {
-   private OfflineAuth plugin;
+   private BlunixOfflineAuth plugin;
 
-   public PlayerChat(OfflineAuth plugin) {
+   public PlayerChat(BlunixOfflineAuth plugin) {
       this.plugin = plugin;
    }
 

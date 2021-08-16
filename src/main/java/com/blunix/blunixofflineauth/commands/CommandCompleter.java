@@ -1,17 +1,16 @@
 package com.blunix.blunixofflineauth.commands;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
 public class CommandCompleter implements TabCompleter {
-   private final OfflineAuth plugin;
+   private final BlunixOfflineAuth plugin;
 
-   public CommandCompleter(OfflineAuth plugin) {
+   public CommandCompleter(BlunixOfflineAuth plugin) {
       this.plugin = plugin;
    }
 

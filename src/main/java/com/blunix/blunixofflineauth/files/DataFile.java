@@ -1,6 +1,6 @@
 package com.blunix.blunixofflineauth.files;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,11 +10,11 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class DataFile {
-   private OfflineAuth plugin;
+   private BlunixOfflineAuth plugin;
    private FileConfiguration dataConfig = null;
    private File configFile = null;
 
-   public DataFile(OfflineAuth plugin) {
+   public DataFile(BlunixOfflineAuth plugin) {
       this.plugin = plugin;
       this.saveDefaultConfig();
    }

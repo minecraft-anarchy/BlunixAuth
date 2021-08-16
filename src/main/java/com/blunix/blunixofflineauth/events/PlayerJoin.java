@@ -1,6 +1,6 @@
 package com.blunix.blunixofflineauth.events;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import com.blunix.blunixofflineauth.util.ConfigManager;
 import com.blunix.blunixofflineauth.util.Messager;
 import org.bukkit.Bukkit;
@@ -11,10 +11,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoin implements Listener {
-   private OfflineAuth plugin;
+   private BlunixOfflineAuth plugin;
    private ConfigManager config;
 
-   public PlayerJoin(OfflineAuth plugin) {
+   public PlayerJoin(BlunixOfflineAuth plugin) {
       this.plugin = plugin;
       this.config = plugin.getConfigManager();
    }

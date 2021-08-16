@@ -1,6 +1,6 @@
 package com.blunix.blunixofflineauth.util;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import com.blunix.blunixofflineauth.commands.BlunixCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -24,12 +24,12 @@ public class Messager {
     }
 
     public static void sendHelpMessage(CommandSender sender) {
-        StringBuilder finalMessage = new StringBuilder("&lCommands\n");
-        Iterator<BlunixCommand> iterator = OfflineAuth.getInstance().getSubcommands().values().iterator();
+        StringBuilder finalMessage = new StringBuilder("&e&lCommands\n");
+        Iterator<BlunixCommand> iterator = BlunixOfflineAuth.getInstance().getSubcommands().values().iterator();
         while (iterator.hasNext()) {
             BlunixCommand subcommand = iterator.next();
             if (!sender.hasPermission(subcommand.getPermission())) continue;
-            finalMessage.append("&").append(subcommand.getUsageMessage()).append(" &- &").append(subcommand.getHelpMessage());
+            finalMessage.append("&a").append(subcommand.getUsageMessage()).append(" &e- &6").append(subcommand.getHelpMessage());
             if (iterator.hasNext()) {
                 finalMessage.append("\n");
             }

@@ -1,6 +1,6 @@
 package com.blunix.blunixofflineauth.files;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import com.blunix.blunixofflineauth.util.Messager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -17,10 +17,10 @@ import java.util.Map;
 import java.util.UUID;
 
 public class DataManager {
-    private final OfflineAuth plugin;
+    private final BlunixOfflineAuth plugin;
     private final DataFile dataFile;
 
-    public DataManager(OfflineAuth plugin) {
+    public DataManager(BlunixOfflineAuth plugin) {
         this.plugin = plugin;
         this.dataFile = new DataFile(plugin);
     }

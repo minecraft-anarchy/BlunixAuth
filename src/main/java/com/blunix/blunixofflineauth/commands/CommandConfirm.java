@@ -1,16 +1,16 @@
 package com.blunix.blunixofflineauth.commands;
 
-import com.blunix.blunixofflineauth.OfflineAuth;
+import com.blunix.blunixofflineauth.BlunixOfflineAuth;
 import com.blunix.blunixofflineauth.files.DataManager;
 import com.blunix.blunixofflineauth.util.Messager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandConfirm extends BlunixCommand {
-    private final OfflineAuth plugin;
+    private final BlunixOfflineAuth plugin;
     private final DataManager dataManager;
 
-    public CommandConfirm(OfflineAuth plugin) {
+    public CommandConfirm(BlunixOfflineAuth plugin) {
         this.plugin = plugin;
         this.dataManager = plugin.getDataManager();
 
