@@ -1,12 +1,11 @@
 package com.blunix.blunixofflineauth;
 
 import com.blunix.blunixofflineauth.commands.*;
-import com.blunix.blunixofflineauth.events.LogListener;
-import com.blunix.blunixofflineauth.events.PlayerChat;
-import com.blunix.blunixofflineauth.events.PlayerJoin;
-import com.blunix.blunixofflineauth.events.PlayerRespawn;
+import com.blunix.blunixofflineauth.listeners.LogListener;
+import com.blunix.blunixofflineauth.listeners.ChatHandler;
+import com.blunix.blunixofflineauth.listeners.PlayerConnectionHandler;
+import com.blunix.blunixofflineauth.listeners.PlayerRespawn;
 import com.blunix.blunixofflineauth.files.DataManager;
-import com.blunix.blunixofflineauth.util.ConfigManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -56,8 +55,8 @@ public class BlunixOfflineAuth extends JavaPlugin {
 
    private void registerListeners() {
       PluginManager pluginManager = this.getServer().getPluginManager();
-      pluginManager.registerEvents(new PlayerJoin(this), this);
-      pluginManager.registerEvents(new PlayerChat(this), this);
+      pluginManager.registerEvents(new PlayerConnectionHandler(this), this);
+      pluginManager.registerEvents(new ChatHandler(this), this);
       pluginManager.registerEvents(new PlayerRespawn(this), this);
       new LogListener().registerFilter();
    }

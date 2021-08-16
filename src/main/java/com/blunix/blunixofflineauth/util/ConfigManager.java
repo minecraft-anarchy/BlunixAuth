@@ -33,8 +33,8 @@ public class ConfigManager {
         return (long) getConfig().getDouble("kick-time") * 20L;
     }
 
-    public static String getString(String path) {
-        return getConfig().getString(path);
+    public static String getLoginInstructions() {
+        return getConfig().getString("login-instruction-message");
     }
 
     public static String getEmailHost() {
